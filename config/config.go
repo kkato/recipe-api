@@ -2,7 +2,8 @@ package config
 
 import (
 	"log"
-	"rest-api/utils"
+
+	"github.com/kkato/recipe-api/utils"
 
 	"gopkg.in/go-ini/ini.v1"
 )

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"rest-api/app/controller"
+	"github.com/kkato/recipe-api/app/controller"
 )
 
 func main() {

@@ -5,8 +5,7 @@ import (
 	"log"
 	"time"
 
-	"rest-api/config"
-
+	"github.com/kkato/recipe-api/config"
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -50,14 +49,14 @@ func init() {
 		log.Fatalln(err)
 	}
 
-	insertSQL1 := `INSERT INTO recipes (title, making_time, serves, ingredients, cost) 
+	insertSQL1 := `INSERT INTO recipes (title, making_time, serves, ingredients, cost)
 		VALUES ('チキンカレー', '45分', '4人', '玉ねぎ,肉,スパイス', 1000)`
 	_, err = Db.Exec(insertSQL1)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	insertSQL2 := `INSERT INTO recipes (title, making_time, serves, ingredients, cost) 
+	insertSQL2 := `INSERT INTO recipes (title, making_time, serves, ingredients, cost)
 		VALUES ('オムライス', '30分', '2人', '玉ねぎ,卵,スパイス,醤油', 700)`
 	_, err = Db.Exec(insertSQL2)
 	if err != nil {

@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"rest-api/app/model"
+	"github.com/kkato/recipe-api/app/model"
 
 	"github.com/gin-gonic/gin"
 )
