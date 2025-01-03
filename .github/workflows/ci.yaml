@@ -36,4 +36,4 @@ jobs:
           # 今回はプッシュまで行うので true
           push: true
           # タグを指定 (例: ghcr.io/{リポジトリ名}/アプリ名:タグ)
-          tags: ghcr.io/${{ github.repository }}/recipe-api:latest
+          tags: ghcr.io/${{ github.repository }}:latest
