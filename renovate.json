@@ -1,28 +1,52 @@
 {
-    "extends": ["config:base"],
+    "extends": [
+        "config:recommended"
+    ],
     "timezone": "Asia/Tokyo",
-    "schedule": ["at any time"],
-    "labels": ["dependencies"],
+    "schedule": [
+        "at any time"
+    ],
+    "labels": [
+        "dependencies"
+    ],
     "packageRules": [
         {
-        "matchDatasources": ["go"],
-        "groupName": "Go modules",
-        "labels": ["go", "dependencies"]
+            "matchDatasources": [
+                "go"
+            ],
+            "groupName": "Go modules",
+            "labels": [
+                "go",
+                "dependencies"
+            ]
         },
         {
-            "matchUpdateTypes": ["patch"],
+            "matchUpdateTypes": [
+                "patch"
+            ],
             "automerge": true,
-            "labels": ["patch"]
+            "labels": [
+                "patch"
+            ]
         },
         {
-          "matchUpdateTypes": ["minor", "patch"],
-          "automerge": true,
-          "labels": ["minor"]
+            "matchUpdateTypes": [
+                "minor",
+                "patch"
+            ],
+            "automerge": true,
+            "labels": [
+                "minor"
+            ]
         },
         {
-          "matchUpdateTypes": ["major"],
-          "automerge": false,
-          "labels": ["major"]
+            "matchUpdateTypes": [
+                "major"
+            ],
+            "automerge": false,
+            "labels": [
+                "major"
+            ]
         }
     ]
 }
