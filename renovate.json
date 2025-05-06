@@ -8,6 +8,14 @@
         "matchDatasources": ["go"],
         "groupName": "Go modules",
         "labels": ["go", "dependencies"]
+        },
+        {
+          "matchUpdateTypes": ["minor", "patch"],
+          "automerge": true
+        },
+        {
+          "matchUpdateTypes": ["major"],
+          "automerge": false
         }
     ]
 }
