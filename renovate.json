@@ -10,12 +10,19 @@
         "labels": ["go", "dependencies"]
         },
         {
+            "matchUpdateTypes": ["patch"],
+            "automerge": true,
+            "labels": ["patch"]
+        },
+        {
           "matchUpdateTypes": ["minor", "patch"],
-          "automerge": true
+          "automerge": true,
+          "labels": ["minor"]
         },
         {
           "matchUpdateTypes": ["major"],
-          "automerge": false
+          "automerge": false,
+          "labels": ["major"]
         }
     ]
 }
