@@ -4,8 +4,8 @@ go 1.23.4
 
 require (
 	github.com/gin-gonic/gin v1.11.0
-	github.com/mattn/go-sqlite3 v1.14.33
-	gopkg.in/go-ini/ini.v1 v1.67.0
+	github.com/mattn/go-sqlite3 v1.14.34
+	gopkg.in/go-ini/ini.v1 v1.67.1
 )
 
 require (
