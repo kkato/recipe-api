@@ -5,7 +5,7 @@ import (
 
 	"github.com/kkato/recipe-api/utils"
 
-	"gopkg.in/go-ini/ini.v1"
+	"gopkg.in/ini.v1"
 )
 
 type ConfigList struct {
