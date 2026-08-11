@@ -13,7 +13,7 @@ HTTPエンドポイントを作成する。
 #### `POST /recipes`エンドポイント
 - `recipe`を新規作成する。
 - 期待する`request`形式: `POST /recipes`
-    - `title`, `making_time`, `servers`, `ingredients`, `cost`
+    - `title`, `making_time`, `serves`, `ingredients`, `cost`
     - 上記パラメータはすべて必須。
 - 期待する`response`形式:
 
@@ -55,7 +55,7 @@ HTTPエンドポイントを作成する。
             "id": 1,
             "title": "チキンカレー",
             "making_time": "45分",
-            "servers": "4人",
+            "serves": "4人",
             "ingredients": "玉ねぎ,肉,スパイス",
             "cost": "1000"
         },
@@ -63,15 +63,15 @@ HTTPエンドポイントを作成する。
             "id": 2,
             "title": "オムライス",
             "making_time": "30分",
-            "servers": "2人",
+            "serves": "2人",
             "ingredients": "玉ねぎ,卵,スパイス,醤油",
-            "cost": "1000" 
+            "cost": "1000"
         },
         {
             "id": 3,
             "title": "トマトスープ",
             "making_time": "15分",
-            "servers": "5人",
+            "serves": "5人",
             "ingredients": "玉ねぎ,トマト,スパイス,水",
             "cost": "450"
         }
@@ -91,7 +91,7 @@ HTTPエンドポイントを作成する。
             "id": 1,
             "title": "チキンカレー",
             "making_time": "45分",
-            "servers": "4人",
+            "serves": "4人",
             "ingredients": "玉ねぎ,肉,スパイス",
             "cost": "1000"
         }
@@ -102,7 +102,7 @@ HTTPエンドポイントを作成する。
 #### `PATCH /recipes/{id}`エンドポイント
 - 指定`id`のレシピを更新し、更新したレシピを返します。
 - 期待する`request`形式: `PATCH /recipes/{id}`
-    - `Body`フィールド: `title`, `making_time`, `servers`, `ingredients`, `cost`
+    - `Body`フィールド: `title`, `making_time`, `serves`, `ingredients`, `cost`
 - 期待する`response`形式:
 ```json
 {
@@ -132,4 +132,4 @@ HTTPエンドポイントを作成する。
 失敗(指定`id`のレシピが存在しない場合):
 ```json
 {   "message": "No Recipe found"   }
-``` 
+```
