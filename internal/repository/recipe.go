@@ -14,7 +14,6 @@ var ErrRecipeNotFound = errors.New("recipe not found")
 type RecipeRepository interface {
 	GetAll(ctx context.Context) ([]model.Recipe, error)
 	GetByID(ctx context.Context, id string) (model.Recipe, error)
-	GetByTitle(ctx context.Context, title string) (model.Recipe, error)
 	Create(ctx context.Context, recipe model.Recipe) (model.Recipe, error)
 	Update(ctx context.Context, id string, recipe model.Recipe) (model.Recipe, error)
 	Delete(ctx context.Context, id string) error
@@ -49,19 +48,6 @@ func (r *recipeRepository) GetAll(ctx context.Context) ([]model.Recipe, error) {
 func (r *recipeRepository) GetByID(ctx context.Context, id string) (model.Recipe, error) {
 	var recipe model.Recipe
 	err := r.db.QueryRowContext(ctx, "SELECT * FROM recipes WHERE id = ?", id).
-		Scan(&recipe.ID, &recipe.Title, &recipe.MakingTime, &recipe.Serves, &recipe.Ingredients, &recipe.Cost, &recipe.CreatedAt, &recipe.UpdatedAt)
-	if errors.Is(err, sql.ErrNoRows) {
-		return model.Recipe{}, ErrRecipeNotFound
-	}
-	if err != nil {
-		return model.Recipe{}, err
-	}
-	return recipe, nil
-}
-
-func (r *recipeRepository) GetByTitle(ctx context.Context, title string) (model.Recipe, error) {
-	var recipe model.Recipe
-	err := r.db.QueryRowContext(ctx, "SELECT * FROM recipes WHERE title = ?", title).
 		Scan(&recipe.ID, &recipe.Title, &recipe.MakingTime, &recipe.Serves, &recipe.Ingredients, &recipe.Cost, &recipe.CreatedAt, &recipe.UpdatedAt)
 	if errors.Is(err, sql.ErrNoRows) {
 		return model.Recipe{}, ErrRecipeNotFound
