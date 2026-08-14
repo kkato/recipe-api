@@ -10,11 +10,11 @@ import (
 )
 
 type RecipeHandler interface {
-	GetRecipes(c *gin.Context)
-	GetRecipe(c *gin.Context)
-	CreateRecipe(c *gin.Context)
-	UpdateRecipe(c *gin.Context)
-	DeleteRecipe(c *gin.Context)
+	GetAll(c *gin.Context)
+	GetByID(c *gin.Context)
+	Create(c *gin.Context)
+	Update(c *gin.Context)
+	Delete(c *gin.Context)
 }
 
 type recipeHandler struct {
@@ -25,7 +25,7 @@ func NewRecipeHandler(repo repository.RecipeRepository) RecipeHandler {
 	return &recipeHandler{repo: repo}
 }
 
-func (h *recipeHandler) GetRecipes(c *gin.Context) {
+func (h *recipeHandler) GetAll(c *gin.Context) {
 	recipes, err := h.repo.GetAll(c.Request.Context())
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{"message": "Failed to fetch recipes"})
@@ -34,7 +34,7 @@ func (h *recipeHandler) GetRecipes(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"recipes": recipes})
 }
 
-func (h *recipeHandler) GetRecipe(c *gin.Context) {
+func (h *recipeHandler) GetByID(c *gin.Context) {
 	recipe, err := h.repo.GetByID(c.Request.Context(), c.Param("id"))
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{"message": "Recipe not found"})
@@ -43,7 +43,7 @@ func (h *recipeHandler) GetRecipe(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Recipe details by id", "recipes": []model.Recipe{recipe}})
 }
 
-func (h *recipeHandler) CreateRecipe(c *gin.Context) {
+func (h *recipeHandler) Create(c *gin.Context) {
 	var recipe model.Recipe
 	if err := c.ShouldBindJSON(&recipe); err != nil {
 		c.JSON(http.StatusOK, gin.H{"message": "Recipe creation failed!", "required": "title, making_time, serves, ingredients, cost"})
@@ -57,7 +57,7 @@ func (h *recipeHandler) CreateRecipe(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Recipe successfully created!", "recipe": []model.Recipe{createdRecipe}})
 }
 
-func (h *recipeHandler) UpdateRecipe(c *gin.Context) {
+func (h *recipeHandler) Update(c *gin.Context) {
 	var recipe model.Recipe
 	if err := c.ShouldBindJSON(&recipe); err != nil {
 		c.JSON(http.StatusOK, gin.H{"message": "Recipe update failed!", "required": "title, making_time, serves, ingredients, cost"})
@@ -73,7 +73,7 @@ func (h *recipeHandler) UpdateRecipe(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Recipe successfully updated!", "recipe": []model.Recipe{updatedRecipe}})
 }
 
-func (h *recipeHandler) DeleteRecipe(c *gin.Context) {
+func (h *recipeHandler) Delete(c *gin.Context) {
 	if err := h.repo.Delete(c.Request.Context(), c.Param("id")); err != nil {
 		c.JSON(http.StatusOK, gin.H{"message": "No Recipe found"})
 		return

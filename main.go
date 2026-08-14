@@ -21,10 +21,10 @@ func main() {
 	h := handler.NewRecipeHandler(repo)
 
 	router := gin.Default()
-	router.GET("/recipes", h.GetRecipes)
-	router.GET("/recipes/:id", h.GetRecipe)
-	router.POST("/recipes", h.CreateRecipe)
-	router.PATCH("/recipes/:id", h.UpdateRecipe)
-	router.DELETE("/recipes/:id", h.DeleteRecipe)
+	router.GET("/recipes", h.GetAll)
+	router.GET("/recipes/:id", h.GetByID)
+	router.POST("/recipes", h.Create)
+	router.PATCH("/recipes/:id", h.Update)
+	router.DELETE("/recipes/:id", h.Delete)
 	router.Run(":8080")
 }
